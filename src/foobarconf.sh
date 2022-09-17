@@ -7,6 +7,9 @@ Foo=""
 Bar=""
 FooBar=""
 
+#
+WARNINGS=false
+
 function foobar_foo_gte_10() {
   file=$CFG_FILE
   opt="Foo"
@@ -14,7 +17,7 @@ function foobar_foo_gte_10() {
   assert_msg="Option '$opt' is greater than or equal to '$expected_value' in '$file'"
 
   let value="$opt"
-  if [ $value -ge 10 ]; then
+  if [ $value -ge $expected_value ]; then
     echo "PASS - $assert_msg"
     return 0
 	fi
@@ -35,10 +38,13 @@ function readConfig() {
 
 function extractVariables() {
 	line="$1"
+
 	variable=${line%=*}
 	variable=$(trim "$variable")
+
 	value=${line#*=}
 	value=$(trim "$value")
+
 	if [ "$variable" = "Foo" ] && isInteger "$value"; then
   	Foo="$value"
 	fi
@@ -55,7 +61,32 @@ function isInteger() {
 	if [ "$integer" -eq "$integer" ] 2> /dev/null; then
 	  return 0
 	fi
-	echo "Warning: "$integer" is not decimal integer!"
+	warning "Warning: "$integer" is not decimal integer!"
+	return 1
+}
+
+function isString() {
+	echo "not implemented"
+	exit 1
+}
+
+function isComment() {
+  comment="$1"
+
+  # Remove spaces from the left of the comment..
+  comment=$(echo "$comment" | sed -e 's/^[[:space:]]*//')
+
+  if [[ $comment == \#* ]]; then
+	  return 0
+	fi
+	return 1
+}
+
+function isEmpty() {
+  string="$1"
+  if [ -z "$string" ]; then
+	  return 0
+	fi
 	return 1
 }
 
@@ -64,26 +95,9 @@ function trim() {
 	echo $(echo $string | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 }
 
-function isComment() {
-  comment="$1"
-  if [[ $comment == \#* ]]; then
-	  return 0
+function warning() {
+  message="$1"
+  if $WARNINGS; then
+	  echo "$message"
 	fi
-	return 1
 }
-
-function isEmpty() {
-  v="$1"
-  if [ -z "$v" ]; then
-	  return 0
-	fi
-	return 1
-}
-
-
-readConfig
-foobar_foo_gte_10
-echo "======="
-echo "Foo = .$Foo."
-echo "Bar = .$Bar."
-echo "FooBar = .$FooBar."

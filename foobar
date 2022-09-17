@@ -1,1 +1,5 @@
 Foo=5
+Bar="hello world"
+
+FooBar=3
+Foo=15
