@@ -7,7 +7,7 @@
 function processTestCase() {
 
 # This should work also as "init" to clean all local variables..
-source $MY_PATH/src/foobarconf.sh
+source $MY_PATH/src/foobar.sh
 
 #
 CFG_FILE=$(mktemp)

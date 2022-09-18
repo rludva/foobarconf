@@ -7,7 +7,7 @@
 function processTestCase() {
 
 # This should work also as "init" to clean all local variables..
-source $MY_PATH/src/foobarconf.sh
+source $MY_PATH/src/foobar.sh
 
 # This is a little bit strange but I need to transfer \t to real tabs..
 LINE=$(echo -e "$TEST_CASE_DATA")
