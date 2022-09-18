@@ -20,8 +20,7 @@ foobar_value=$FooBar
 #
 rm $CFG_FILE
 
-if ([ -z $foobar_value ] && [ ! -z $EXPECTED_FOOBAR_VALUE ]) \
-   || [ ! $foobar_value -eq $EXPECTED_FOOBAR_VALUE ]; then
+if ([ -z "$foobar_value" ]  && [ ! -z "$EXPECTED_FOOBAR_VALUE" ])  || [ ! "$foobar_value" -eq "$EXPECTED_FOOBAR_VALUE" ] 2> /dev/null; then
   echo
   echo "${RED}${BOLD}Failing Test:${RESET} [$(basename ${BASH_SOURCE[0]})] - $TEST_DESCRIPTION"
   echo "- readConfig(\`$TEST_CASE_DATA\`): FooBar=$foobar_value, Expected: FooBar=$EXPECTED_FOOBAR_VALUE"
@@ -33,7 +32,6 @@ fi
 IncPassingCounter
 return 0
 }
-
 
 TEST_DESCRIPTION="Spaces before the equation are trimmed and set correctly the value"
 EXPECTED_FOOBAR_VALUE=123
@@ -50,14 +48,10 @@ EXPECTED_FOOBAR_VALUE=123
 TEST_CASE_DATA="  FooBar=123  "
 processTestCase
 
-#
-# This test is breaking the testing procedure!
-#
 TEST_DESCRIPTION="Incorrect integer value with spaces should not be processed."
 EXPECTED_FOOBAR_VALUE=
 TEST_CASE_DATA="FooBar=1 500"
 processTestCase
-return
 
 TEST_DESCRIPTION="New line does not have any effect for the result"
 EXPECTED_FOOBAR_VALUE=1500
@@ -144,7 +138,7 @@ EXPECTED_FOOBAR_VALUE=4294967296
 TEST_CASE_DATA="FooBar=4294967296"
 processTestCase
 
-TEST_DESCRIPTION="The value o 2^64 is parsed correctly"
+TEST_DESCRIPTION="The value of 2^64 is parsed correctly"
 EXPECTED_FOOBAR_VALUE=18446744073709551616
 TEST_CASE_DATA="FooBar=18446744073709551616"
 processTestCase

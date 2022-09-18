@@ -36,10 +36,12 @@ function IncTestsCounter() {
   ((TESTS=TESTS+1))
 }
 
+# Collection of test functions..
 source $MY_PATH/tests/tests_01_return_value.sh
 source $MY_PATH/tests/tests_02_foo_value.sh
-source $MY_PATH/tests/tests_03_foobar_value.sh
-source $MY_PATH/tests/tests_04_comments.sh
+source $MY_PATH/tests/tests_03_bar_value.sh
+source $MY_PATH/tests/tests_04_foobar_value.sh
+source $MY_PATH/tests/tests_05_comments.sh
 
 # Print results dashboard..
 echo 

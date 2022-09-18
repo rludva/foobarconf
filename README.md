@@ -4,7 +4,7 @@ Homework for FooBar Configuration..
 ## TODO
 - 
 
-## Problems to solve
+## Problems to solve or think about
 - How to add array to array TEST_CASE(NAME, DESCRIPTION, EXPECTED_RESULT) => TEST_CASES[] it is always added to the end and not added as a next filed.
 (a, b, c) 
 (c, d, f)
@@ -15,3 +15,7 @@ Homework for FooBar Configuration..
 
 - How to add <tab> to a string when \t is interpreted like two characters?
   Do I really have to use echo?
+
+- Checking  the integer is integer: a) vs b)
+  a)  [[ "$value" != ?(-)+([[:digit:]]) ]]
+  b)  [ "$integer" -eq "$integer" ]

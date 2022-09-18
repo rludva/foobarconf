@@ -20,8 +20,7 @@ foo_value=$Foo
 #
 rm $CFG_FILE
 
-if ([ -z $foo_value ] && [ ! -z $EXPECTED_FOO_VALUE ]) \
-   || [ ! $foo_value -eq $EXPECTED_FOO_VALUE ]; then
+if ([ -z "$foo_value" ] && [ ! -z "$EXPECTED_FOO_VALUE" ] ) || [ ! "$foo_value" -eq "$EXPECTED_FOO_VALUE" ] 2> /dev/null; then
   echo
   echo "${RED}${BOLD}Failing Test:${RESET} [$(basename ${BASH_SOURCE[0]})] - $TEST_DESCRIPTION"
   echo "- readConfig(\`$TEST_CASE_DATA\`): Foo=$foo_value, Expected: Foo=$EXPECTED_FOO_VALUE"
@@ -33,7 +32,6 @@ fi
 IncPassingCounter
 return 0
 }
-
 
 TEST_DESCRIPTION="Spaces before the equation are trimmed and set correctly the value"
 EXPECTED_FOO_VALUE=123
@@ -140,7 +138,7 @@ EXPECTED_FOO_VALUE=4294967296
 TEST_CASE_DATA="Foo=4294967296"
 processTestCase
 
-TEST_DESCRIPTION="The value o 2^64 is parsed correctly"
+TEST_DESCRIPTION="The value of 2^64 is parsed correctly"
 EXPECTED_FOO_VALUE=18446744073709551616
 TEST_CASE_DATA="Foo=18446744073709551616"
 processTestCase
