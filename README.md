@@ -2,7 +2,9 @@
 Homework for FooBar Configuration..
 
 ## TODO
-- 
+- Creating temporary file for the configuration? 
+  May be correct and accepted but also may not. Probably should be tested in the origin configuration file..
+
 
 ## Problems to solve or think about
 - How to add array to array TEST_CASE(NAME, DESCRIPTION, EXPECTED_RESULT) => TEST_CASES[] it is always added to the end and not added as a next filed.
