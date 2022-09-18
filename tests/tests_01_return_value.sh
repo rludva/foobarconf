@@ -4,6 +4,12 @@
 # In this scenraio we test only the result of `foobar_foo_gte_10` function.
 #
 
+if [ ! -v MY_PATH ]; then
+  echo "This test function is not expected to be executed separately.."
+  echo
+  exit 1
+fi
+
 function processTestCase() {
 
 # This should work also as "init" to clean all local variables..

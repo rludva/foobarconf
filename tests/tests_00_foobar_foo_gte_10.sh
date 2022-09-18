@@ -4,6 +4,12 @@
 # In this scenraio we test the result app: `foobar_foo_gte_10` not only the function where its logic is defined.
 #
 
+if [ ! -v MY_PATH ]; then
+  echo "This test function is not expected to be executed separately.."
+  echo
+  exit 1
+fi
+
 function processTestCase() {
 
 # Need to source the dependencies because we need the default value of CFG_FILE name..
