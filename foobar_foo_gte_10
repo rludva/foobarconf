@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Get base directory of this project..
+MY_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Read the application dependecies..
+source $MY_PATH/src/foobar.sh
+
+# Call the "core" app..
+readConfig
+foobar_foo_gte_10
