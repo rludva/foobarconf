@@ -28,3 +28,19 @@ Homework for FooBar Configuration..
   (yes/no)
 
 - !!! The tests in tests folder are not expected to be executed separately, that should be fixed! !!!
+
+- This in test_03_bar is failing and needs more investigation!
+```
+TEST_DESCRIPTION="Tab is not removed when string is in double-quotes."
+EXPECTED_BAR_VALUE="\"	string value\""
+TEST_CASE_DATA="Bar=\"\tstring value\""
+processTestCase
+#
+# Failing! Need to correct and decide if test is wrong or application is wrong..
+#
+# Looks like there are two types of <tab> characters:
+#  a) 0x09      "	" - as a result of echo "	" (<tab>)
+#  b) 0x2a 0x0a "	" - as a result of echo -e "\t"
+#
+# Check with: echo -e ' \t ' | hexdump -C
+```

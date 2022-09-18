@@ -43,7 +43,7 @@ if [ ! -z "$ORIGIN_CFG_FILE_BACKUP_NAME" ]; then
   cp "$ORIGIN_CFG_FILE_BACKUP_NAME" "$CFG_FILE"
 fi
 
-if [ ! $result -eq $EXPECTED_RESULT ] ; then
+if [ ! $result -eq $EXPECTED_RESULT ]; then
   echo
   echo "${RED}${BOLD}Failing Test:${RESET} $TEST_DESCRIPTION"
   echo "- foobar_foo_gte_10 with \`$TEST_CASE_DATA\`: $result, Expected: $EXPECTED_RESULT"

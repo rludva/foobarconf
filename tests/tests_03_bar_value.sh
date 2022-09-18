@@ -85,3 +85,9 @@ processTestCase
 #
 # Failing! Need to correct and decide if test is wrong or application is wrong..
 #
+# Looks like there are two types of <tab> characters:
+#  a) 0x09      "	" - as a result of echo "	" (<tab>)
+#  b) 0x2a 0x0a "	" - as a result of echo -e "\t"
+#
+# Check with: echo -e ' \t ' | hexdump -C
+#
