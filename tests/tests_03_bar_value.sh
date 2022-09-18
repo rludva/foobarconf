@@ -15,7 +15,6 @@ echo -e "$TEST_CASE_DATA" > $CFG_FILE
 
 #
 readConfig
-cp $CFG_FILE /tmp/origin
 bar_value=$Bar
 
 #

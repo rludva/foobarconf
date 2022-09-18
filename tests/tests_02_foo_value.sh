@@ -162,4 +162,10 @@ TEST_DESCRIPTION="Float number should be parsed correctly"
 EXPECTED_FOO_VALUE=12.3
 TEST_CASE_DATA="Foo=12.3"
 processTestCase
+#
+# Here it is not clear from the task description if read nothing or cut the number
+# What is expected?
+# a) 12.3 => NULL empty value 
+# b) 12.3 => 12 (only decimal part)
+#
 

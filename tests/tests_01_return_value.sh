@@ -21,7 +21,7 @@ result=$?
 #
 rm $CFG_FILE
 
-if [ ! $result -eq $EXPECTED_RESULT ]; then
+if [ ! $result -eq $EXPECTED_RESULT ] ; then
   echo
   echo "${RED}${BOLD}Failing Test:${RESET} $TEST_DESCRIPTION"
   echo "- foobar_foo_gte_10 with \`$TEST_CASE_DATA\`: $result, Expected: $EXPECTED_RESULT"
@@ -46,9 +46,19 @@ EXPECTED_RESULT=0
 TEST_CASE_DATA="Foo=994"
 processTestCase
 
-TEST_DESCRIPTION="Check that regular value <10 is failing"
+TEST_DESCRIPTION="Check that regular value: 11 is passing"
+EXPECTED_RESULT=0
+TEST_CASE_DATA="Foo=11"
+processTestCase
+
+TEST_DESCRIPTION="Check that regular value: 10 is passing"
+EXPECTED_RESULT=0
+TEST_CASE_DATA="Foo=10"
+processTestCase
+
+TEST_DESCRIPTION="Check that regular value:9 <10 is failing"
 EXPECTED_RESULT=1
-TEST_CASE_DATA="Foo=8"
+TEST_CASE_DATA="Foo=9"
 processTestCase
 
 TEST_DESCRIPTION="Check that regular negativ value is out of limit <10 and failing"
@@ -60,7 +70,6 @@ TEST_DESCRIPTION="Check that explicitly positive value is <10 and passing"
 EXPECTED_RESULT=0
 TEST_CASE_DATA="Foo=+77"
 processTestCase
-
 
 TEST_DESCRIPTION="Check that zero value is out of limit <10 and failing"
 EXPECTED_RESULT=1
@@ -75,4 +84,14 @@ processTestCase
 TEST_DESCRIPTION="Check that irregular integer value is failing"
 EXPECTED_RESULT=1
 TEST_CASE_DATA="Foo=9lorem9"
+processTestCase
+
+TEST_DESCRIPTION="The value 2^64 is probably out of range but should pass."
+EXPECTED_RESULT=0
+TEST_CASE_DATA="Foo=18446744073709551616"
+processTestCase
+
+TEST_DESCRIPTION="Float number should fail because it is not integer.."
+EXPECTED_RESULT=1
+TEST_CASE_DATA="Foo=10.5"
 processTestCase
