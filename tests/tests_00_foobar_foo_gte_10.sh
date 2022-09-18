@@ -6,7 +6,7 @@
 
 function processTestCase() {
 
-#
+# Need to source the dependencies because we need the default value of CFG_FILE name..
 source $MY_PATH/src/foobar.sh  
 
 # Create temporary configuration file..

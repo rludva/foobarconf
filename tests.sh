@@ -44,7 +44,7 @@ source $MY_PATH/tests/tests_03_bar_value.sh
 source $MY_PATH/tests/tests_04_foobar_value.sh
 source $MY_PATH/tests/tests_05_comments.sh
 
-# Print results dashboard..
+# Print a dashboard with results..
 echo 
 echo "${BOLD}Results summary:${RESET}"
 echo "- Number of failing tests: ${RED}$FAILING${RESET}"

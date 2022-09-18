@@ -78,5 +78,4 @@ TEST_CASE_DATA="Bar=\"\tstring value\""
 processTestCase
 #
 # Failing! Need to correct and decide if test is wrong or application is wrong..
-# Probably the 
 #
