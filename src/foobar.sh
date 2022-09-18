@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# The default configuration file location
 CFG_FILE="/tmp/foobar"
 
 # Variables
@@ -9,6 +10,10 @@ FooBar=""
 
 #
 WARNINGS=false
+
+#
+# Public functions..
+#
 
 function foobar_foo_gte_10() {
   file=$CFG_FILE
@@ -35,6 +40,10 @@ function readConfig() {
     extractVariables "$line"
   done <$CFG_FILE
 }
+
+#
+# Private functions..
+#
 
 function extractVariables() {
   line="$1"
